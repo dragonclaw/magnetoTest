@@ -3,26 +3,21 @@ const dnaToTest = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"]
 let isMutant = function (dna) {
     let dnaArray = [[]];
     dnaArray = transcodeDNA(dna);
-    for (let x = 0; x < dnaArray[0].length; x++) {
-        for (let y = 0; y < dnaArray.length; y++) {
+    for (let y = 0; y < dnaArray[0].length; y++) {
+        for (let x = 0; x < dnaArray.length; x++) {
             let charToCheck = dnaArray[y][x];
-            console.log(testVertical(x, y, charToCheck, dnaArray))
+            console.log(testVertical(y, x, charToCheck, dnaArray))
         }
     }
 }
 
-const testVertical = function (indexX, indexY, charToCheck, dnaArray) {
-    if (4 - indexY < 0) {
+const testVertical = function (indexY, indexX, charToCheck, dnaArray) {
+    if (3 - (indexY + 1) < 0) {
         return false;
     }
     let result = true;
     for (let x = 1; x < 4; x++) {
-        console.log('comparing this char');
-        console.log(charToCheck);
-        console.log('to this char moving');
-        console.log(dnaArray[indexY + x][indexX]);
         if (dnaArray[indexY + x][indexX] !== charToCheck) {
-            console.log('break')
             result = false;
             break;
         }
