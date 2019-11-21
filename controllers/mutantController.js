@@ -13,7 +13,6 @@ exports.mutant = async (req, res) => {
 
         }
         res.status(200).json({
-            success: true,
         });
     }
     else {
@@ -21,7 +20,6 @@ exports.mutant = async (req, res) => {
             await models.MutantsDNA.create({ mutantDNA: JSON.stringify(dna), isMutant: false });
         }
         res.status(403).json({
-            success: false,
         });
     }
 
