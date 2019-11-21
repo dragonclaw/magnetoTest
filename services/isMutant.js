@@ -1,6 +1,4 @@
-const dnaToTest = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"]
-
-let isMutant = function (dna) {
+exports.isMutant = function (dna) {
     let dnaArray = [[]];
     dnaArray = transcodeDNA(dna);
     let trueSequencesCount = 0;
@@ -80,4 +78,3 @@ const transcodeDNA = function (dnaArray) {
     return destructuredDNAArray;
 }
 
-console.log(isMutant(dnaToTest));
