@@ -59,7 +59,84 @@ Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (En
 Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del sistema. 
 
 #### Entregar: 
-- Código Fuente (Para Nivel 2 y 3: En repositorio github). 
-- Instrucciones de cómo ejecutar el programa o la API. (Para Nivel 2 y 3: En README de github). 
-- URL de la API (Nivel 2 y 3). 
-- Formato PDF para documentos (Nivel 3). 
+- Código Fuente (Para Nivel 2 y 3: En repositorio github). (CHECK)
+- Instrucciones de cómo ejecutar el programa o la API. (Para Nivel 2 y 3: En README de github). (CHECK)
+- URL de la API (Nivel 2 y 3). (TODO)
+- Formato PDF para documentos (Nivel 3). (TODO)
+
+# PASOS PARA INSTANCIAR
+Para instanciar la API de forma local necesitan utilizar el comando 
+
+``$ git clone https://github.com/dragonclaw/magnetoTest.git`` 
+
+Con la ruta de este proyecto de github.
+
+El node utilizado para la instanciacion es el LTS 8.12.0 aunque cualquier version superior deberia funcionar sin problemas
+
+Luego deben de realizar un `` $ npm install``
+
+Esto instalara las dependencias del proyecto **EXPRESSJS, SEQUELIZE entre otros**
+
+Para correr el proyecto deben iniciar el servidor utilizando el comando ``$ npm start`` y el servidor estara corriendo en el puerto 3000.
+
+Ingresar al navegador de su preferencia y colocar [http://localhost:3000](http://localhost:3000)
+
+Si la respuesta del servidor es:
+
+``` json
+{
+success: true,
+msg: "Api working!"
+}
+```
+El servidor esta funcionando correctamente.
+
+# PASOS PARA ACCEDER A LA API HOSTEADA
+
+El host de la API se encuentra en la siguiente URL:
+[http://52.39.106.8/:3000](http://52.39.106.8/:3000)
+Si la respuesta del servidor es:
+
+``` json
+{
+success: true,
+msg: "Api working!"
+}
+```
+El servidor esta funcionando correctamente.
+
+# RUTAS DEL SERVIDOR
+
+```
+GET → / {
+Parameters:
+none,
+description:'Root of API'
+```
+```
+POST → /mutant/ {
+Parameters:
+"dna":[]
+Example: ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
+Description:'Expect an array of strings representing the DNA'
+Returns:
+Status(200)OK if DNA string array correspond to a mutant,
+Status(403)FORBIDDEN if DNA string array correspond to a human
+
+```
+```
+GET → /stats/
+Parameters:
+none,
+Description:'See stats on the DB of mutants-humans ratio'
+
+Returns:
+JSON
+
+{
+	count_mutant_dna:  1,
+	count_human_dna:  2,
+	ratio:  0.5
+}
+
+```
