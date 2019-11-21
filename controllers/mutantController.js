@@ -1,15 +1,29 @@
 const models = require('../models');
 const mutantService = require('../services/isMutant');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
-exports.mutant = (req, res) => {
+exports.mutant = async (req, res) => {
     let { dna } = req.body;
     dna = JSON.parse(dna);
-    if (mutantService.isMutant(dna))
+    const tester = await models.MutantsDNA.findOne({ where: { mutantDNA: { [Op.like]: JSON.stringify(dna) } } })
+    if (mutantService.isMutant(dna)) {
+        if (!tester) {
+            await models.MutantsDNA.create({ mutantDNA: JSON.stringify(dna), isMutant: true });
+
+        }
         res.status(200).json({
             success: true,
         });
-    else
+    }
+    else {
+        if (!tester) {
+            await models.MutantsDNA.create({ mutantDNA: JSON.stringify(dna), isMutant: false });
+        }
         res.status(403).json({
             success: false,
         });
+    }
+
 };
+
