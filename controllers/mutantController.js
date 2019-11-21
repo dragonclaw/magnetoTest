@@ -10,7 +10,6 @@ exports.mutant = async (req, res) => {
     if (mutantService.isMutant(dna)) {
         if (!tester) {
             await models.MutantsDNA.create({ mutantDNA: JSON.stringify(dna), isMutant: true });
-
         }
         res.status(200).json({
         });
