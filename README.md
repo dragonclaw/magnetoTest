@@ -61,8 +61,8 @@ Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del
 #### Entregar: 
 - Código Fuente (Para Nivel 2 y 3: En repositorio github). (CHECK)
 - Instrucciones de cómo ejecutar el programa o la API. (Para Nivel 2 y 3: En README de github). (CHECK)
-- URL de la API (Nivel 2 y 3). (TODO)
-- Formato PDF para documentos (Nivel 3). (TODO)
+- URL de la API (Nivel 2 y 3). (CHECK)
+- Formato PDF para documentos (Nivel 3). (CHECK)
 
 # PASOS PARA INSTANCIAR
 Para instanciar la API de forma local necesitan utilizar el comando 
