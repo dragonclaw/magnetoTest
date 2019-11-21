@@ -7,7 +7,8 @@ let isMutant = function (dna) {
         for (let x = 0; x < dnaArray.length; x++) {
             let charToCheck = dnaArray[y][x];
             //console.log(testVertical(y, x, charToCheck, dnaArray))
-            console.log(testHorizontal(y, x, charToCheck, dnaArray))
+            //console.log(testHorizontal(y, x, charToCheck, dnaArray))
+            console.log(testDiagonal(y, x, charToCheck, dnaArray))
         }
     }
 }
@@ -33,6 +34,20 @@ const testHorizontal = function (indexY, indexX, charToCheck, dnaArray) {
     let result = true;
     for (let x = 1; x < 4; x++) {
         if (dnaArray[indexY][indexX + x] !== charToCheck) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+
+const testDiagonal = function (indexY, indexX, charToCheck, dnaArray) {
+    if ((3 - (indexX + 1) < 0) || (3 - (indexY + 1) < 0)) {
+        return false;
+    }
+    let result = true;
+    for (let x = 1; x < 4; x++) {
+        if (dnaArray[indexY + x][indexX + x] !== charToCheck) {
             result = false;
             break;
         }
