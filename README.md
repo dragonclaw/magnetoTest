@@ -17,8 +17,8 @@ Las letras de los Strings solo pueden ser: (A,T,C,G), las cuales representa cada
 | ------ | ------ | ------ | ------ |  ------ | ------ |
 | C | A | G | T | G | C | 
 | T | T | A | T | T | T |
-| A | G | A | C | G | G |
-| G | C | G | T | C | A |
+| A | G | A | A | G | G |
+| G | C | A | T | C | A |
 | T | C | A | C | T | G |
 
 
@@ -64,6 +64,11 @@ Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del
 - URL de la API (Nivel 2 y 3). (CHECK)
 - Formato PDF para documentos (Nivel 3). (CHECK)
 
+# IMPORTANTE
+Se tomo en cuenta para determinar si un DNA es de un mutante que tenga **MÁS de UNA** secuencia de 4 letras **(desde 2 en adelante)**.
+
+Si se desea que el validador de DNA sea **DESDE UNA** secuencia de 4 letras **(1 en adelante)**, es un simple fix en el codigo.
+
 # PASOS PARA INSTANCIAR
 Para instanciar la API de forma local necesitan utilizar el comando 
 
@@ -105,6 +110,10 @@ msg: "Api working!"
 ```
 El servidor esta funcionando correctamente.
 
+El proceso node esta corriendo en una instancia de PM2 de un servidor AWS(EC2), igualmente la base de datos esta alojada en AWS (RDS) en una version Free-Tier (t2.micro).
+
+Se adjunta en un PDF la arquitectura del sistema y el diagrama de secuencias
+
 # RUTAS DEL SERVIDOR
 
 ```
@@ -140,3 +149,39 @@ JSON
 }
 
 ```
+
+### CODE-COVERAGE & TESTING
+
+Las pruebas unitarias se realizaron mediante el comando
+
+``` npm run test ```
+
+Utilizando **Mocha - Chai - Supertest**
+
+En el cual se agregaron las pruebas unitarias para los Endpoints establecidos.
+
+El code-coverage se realizo utilizando **Istambul(nyc)**, se deja adjunto.
+
+-------------------------|----------|----------|----------|----------|-------------------|
+File                     |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-------------------------|----------|----------|----------|----------|-------------------|
+All files                |    93.51 |       80 |    88.24 |    93.24 |                   |
+ magnetoTest             |    77.27 |        0 |        0 |    77.27 |                   |
+  app.js                 |    77.27 |        0 |        0 |    77.27 |    25,31,32,35,36 |
+ magnetoTest/controllers |    92.31 |    66.67 |      100 |    92.31 |                   |
+  indexController.js     |      100 |      100 |      100 |      100 |                   |
+  mutantController.js    |    86.67 |    66.67 |      100 |    86.67 |             12,19 |
+  statsController.js     |      100 |      100 |      100 |      100 |                   |
+ magnetoTest/models      |     91.3 |    77.78 |      100 |     91.3 |                   |
+  MutantsDNA.js          |      100 |      100 |      100 |      100 |                   |
+  index.js               |       90 |    77.78 |      100 |       90 |             13,30 |
+ magnetoTest/routes      |      100 |      100 |      100 |      100 |                   |
+  index.js               |      100 |      100 |      100 |      100 |                   |
+  mutant.js              |      100 |      100 |      100 |      100 |                   |
+  routes.js              |      100 |      100 |      100 |      100 |                   |
+  stats.js               |      100 |      100 |      100 |      100 |                   |
+ magnetoTest/services    |    98.36 |    96.15 |      100 |    98.18 |                   |
+  isMutant.js            |    98.36 |    96.15 |      100 |    98.18 |                11 |
+-------------------------|----------|----------|----------|----------|-------------------|
+
+
