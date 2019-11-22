@@ -162,6 +162,7 @@ En el cual se agregaron las pruebas unitarias para los Endpoints establecidos.
 
 El code-coverage se realizo utilizando **Istambul(nyc)**, se deja adjunto.
 
+````
 -------------------------|----------|----------|----------|----------|-------------------|
 File                     |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 -------------------------|----------|----------|----------|----------|-------------------|
@@ -183,5 +184,6 @@ All files                |    93.51 |       80 |    88.24 |    93.24 |          
  magnetoTest/services    |    98.36 |    96.15 |      100 |    98.18 |                   |
   isMutant.js            |    98.36 |    96.15 |      100 |    98.18 |                11 |
 -------------------------|----------|----------|----------|----------|-------------------|
+```
 
 
