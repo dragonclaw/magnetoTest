@@ -162,7 +162,7 @@ En el cual se agregaron las pruebas unitarias para los Endpoints establecidos.
 
 El code-coverage se realizo utilizando **Istambul(nyc)**, se deja adjunto.
 
-````
+```
 -------------------------|----------|----------|----------|----------|-------------------|
 File                     |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 -------------------------|----------|----------|----------|----------|-------------------|
