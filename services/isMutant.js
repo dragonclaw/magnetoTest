@@ -11,7 +11,11 @@ exports.isMutant = function (dna) {
                 trueSequencesCount++;
             if (testDiagonal(y, x, charToCheck, dnaArray))
                 trueSequencesCount++;
+            if (trueSequencesCount > 1)
+                break;
         }
+        if (trueSequencesCount > 1)
+            break;
     }
     if (trueSequencesCount > 1) {
         return true;

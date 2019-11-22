@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 exports.mutant = async (req, res) => {
     let { dna } = req.body;
     dna = JSON.parse(dna);
-    const tester = await models.MutantsDNA.findOne({ where: { mutantDNA: { [Op.like]: JSON.stringify(dna) } } })
+    const tester = await models.MutantsDNA.findOne({ where: { mutantDNA: JSON.stringify(dna) } })
     if (mutantService.isMutant(dna)) {
         if (!tester) {
             await models.MutantsDNA.create({ mutantDNA: JSON.stringify(dna), isMutant: true });
