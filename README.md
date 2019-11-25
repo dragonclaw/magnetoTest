@@ -99,7 +99,7 @@ El servidor esta funcionando correctamente.
 # PASOS PARA ACCEDER A LA API HOSTEADA
 
 El host de la API se encuentra en la siguiente URL:
-[http://52.39.106.8/:3000](http://52.39.106.8/:3000)
+[http://52.39.106.8:3000](http://52.39.106.8:3000)
 Si la respuesta del servidor es:
 
 ``` json
